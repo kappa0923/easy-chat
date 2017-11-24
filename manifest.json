@@ -1,0 +1,7 @@
+{
+  "name": "Easy Chat",
+  "short_name": "Easy Chat",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "orientation": "portrait"
+}

@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0",
+  "name": "Fasy Chat",
+  "launch_path": "/index.html",
+  "description": "Easy Chat with Firebase",
+  "developer": {
+    "name": "kappa0923",
+    "url": "https://gihub.com/kappa0923"
+  },
+  "installs_allowed_from": [
+    "*"
+  ],
+  "default_locale": "ja",
+  "permissions": {
+  },
+  "locales": {
+    "ja": {
+      "name": "Easy Chat",
+      "description": "Create chat app easily using Firebase 2.0"
+    }
+  }
+}
