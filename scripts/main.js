@@ -69,7 +69,7 @@ EasyChat.prototype.loadMessages = function() {
   //   });
   // })
 
-  // TODO : 12. 認証後のユーザー画像追加
+  // TODO : 11. 認証後のユーザー画像追加
   // this.firestore.collection('messages')
   //   .orderBy('timestamp')
   //   .get()
@@ -125,14 +125,14 @@ EasyChat.prototype.saveMessage = function(e) {
 // Signs-in Easy Chat.
 EasyChat.prototype.signIn = function() {
   // TODO : 11. サインインボタン
-  // var provider = new firebase.auth.GoogleAuthProvider();
-  // this.auth.signInWithPopup(provider);
+  var provider = new firebase.auth.GoogleAuthProvider();
+  this.auth.signInWithPopup(provider);
 };
 
 // Signs-out of Easy Chat.
 EasyChat.prototype.signOut = function() {
   // TODO : 11. サインアウトボタン
-  // this.auth.signOut();
+  this.auth.signOut();
 };
 
 // Triggers when the auth state change for instance when the user signs-in or signs-out.
