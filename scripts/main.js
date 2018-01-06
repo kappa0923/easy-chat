@@ -52,7 +52,7 @@ EasyChat.prototype.initFirebase = function() {
   //     });
   //   });
 
-  // TODO : 11. 認証を追加
+  // TODO : 12. 認証を追加
   // this.auth = firebase.auth();
   // this.auth.onAuthStateChanged(this.onAuthStateChanged.bind(this));
 };
@@ -69,7 +69,7 @@ EasyChat.prototype.loadMessages = function() {
   //   });
   // })
 
-  // TODO : 11. 認証後のユーザー画像追加
+  // TODO : 12. 認証後のユーザー画像追加
   // this.firestore.collection('messages')
   //   .orderBy('timestamp')
   //   .get()
@@ -105,7 +105,7 @@ EasyChat.prototype.saveMessage = function(e) {
   //   this.toggleButton();
   // }
 
-  // TODO : 11. 認証チェックを追加
+  // TODO : 12. 認証チェックを追加
   // if (this.messageInput.value && this.checkSignedInWithMessage()) {
   //   this.firestore.collection('messages').add({
   //     name: this.auth.currentUser.displayName,
