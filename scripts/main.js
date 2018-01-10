@@ -156,9 +156,6 @@ EasyChat.prototype.onAuthStateChanged = function(user) {
 
     // We load currently existing chant messages.
     this.loadMessages();
-
-    // We save the Firebase Messaging Device token and enable notifications.
-    this.saveMessagingDeviceToken();
   } else {
     // Hide user's profile and sign-out button.
     this.userName.setAttribute('hidden', 'true');
