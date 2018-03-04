@@ -7,7 +7,7 @@ main, #messages-card {
   padding-bottom: 0;
 }
 #messages-card-container {
-  height: calc(100% - 150px);
+  height: 95%;
   padding-bottom: 0;
 }
 #messages-card {
@@ -155,8 +155,7 @@ main, #messages-card {
 }
 @media screen and (max-width: 610px) {
   header {
-    height: 113px;
-    padding-bottom: 80px !important;
+    height: 70px;
   }
   #user-container {
     top: 72px;
@@ -164,6 +163,7 @@ main, #messages-card {
     height: 38px;
     padding-top: 3px;
     padding-right: 2px;
+    display: none;
   }
   #user-container #user-pic {
     top: 2px;
