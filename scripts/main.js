@@ -45,9 +45,9 @@ EasyChat.prototype.initFirebase = function() {
   // this.firestore.collection('messages')
   //   .orderBy('timestamp')
   //   .onSnapshot(function(querySnapshot) {
-  //     querySnapshot.docChanges.forEach(function(change) {
+  //     querySnapshot.docChanges().forEach(function(change) {
   //       if (change.type === "added") {
-  //           that.displayMessage(change.doc.id, change.doc.data().name, change.doc.data().message, change.doc.data().photoURL)
+  //         that.displayMessage(change.doc.id, change.doc.data().name, change.doc.data().message, change.doc.data().photoURL)
   //       }
   //     });
   //   });
@@ -76,8 +76,8 @@ EasyChat.prototype.loadMessages = function() {
   //   .then((querySnapshot) => {
   //     querySnapshot.forEach((doc) => {
   //       this.displayMessage(doc.id, doc.data().name, doc.data().message, doc.data().photoURL)
-  //   });
-  // })
+  //     });
+  //   })
 };
 
 // Saves a new message on the Firestore.
@@ -100,7 +100,7 @@ EasyChat.prototype.saveMessage = function(e) {
   //   .catch(function(error) {
   //     console.error("Error adding document: ", error);
   //   });
-  //
+
   //   EasyChat.resetMaterialTextfield(this.messageInput);
   //   this.toggleButton();
   // }
@@ -116,7 +116,7 @@ EasyChat.prototype.saveMessage = function(e) {
   //   .catch(function(error) {
   //     console.error("Error adding document: ", error);
   //   });
-  //
+
   //   EasyChat.resetMaterialTextfield(this.messageInput);
   //   this.toggleButton();
   // }
@@ -196,11 +196,11 @@ EasyChat.resetMaterialTextfield = function(element) {
 
 // Template for messages.
 EasyChat.MESSAGE_TEMPLATE =
-    '<div class="message-container">' +
-      '<div class="spacing"><div class="pic"></div></div>' +
-      '<div class="message"></div>' +
-      '<div class="name"></div>' +
-    '</div>';
+  '<div class="message-container">' +
+  '<div class="spacing"><div class="pic"></div></div>' +
+  '<div class="message"></div>' +
+  '<div class="name"></div>' +
+  '</div>';
 
 // A loading image URL.
 // EasyChat.LOADING_IMAGE_URL = 'https://www.google.com/images/spin-32.gif';
@@ -248,8 +248,8 @@ EasyChat.prototype.toggleButton = function() {
 EasyChat.prototype.checkSetup = function() {
   if (!window.firebase || !(firebase.app instanceof Function) || !firebase.app().options) {
     window.alert('You have not configured and imported the Firebase SDK. ' +
-        'Make sure you go through the codelab setup instructions and make ' +
-        'sure you are running the codelab using `firebase serve`');
+      'Make sure you go through the codelab setup instructions and make ' +
+      'sure you are running the codelab using `firebase serve`');
   }
 };
 
