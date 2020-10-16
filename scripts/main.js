@@ -46,110 +46,37 @@ class EasyChat {
     this.initAuth();
 
     // Firestoreからメッセージ読み込み
-    // this.loadMessages();
+    this.loadMessages();
   }
 
   // Sets up Firebase features.
   initFirebase() {
     // Firestoreを使うための初期化処理
     this.firestore = firebase.firestore();
-
-    // TODO : 10. Add realtime update listener
-    var that = this;
-    this.firestore.collection('messages')
-      .orderBy('timestamp')
-      .onSnapshot(function (querySnapshot) {
-        querySnapshot.docChanges().forEach(function (change) {
-          if (change.type === "added") {
-            that.displayMessage(change.doc.id, change.doc.data().name, change.doc.data().message, change.doc.data().photoURL)
-          }
-        });
-      });
   };
 
   // Sets up Firebase Authentication.
   initAuth() {
-    // Firebase Authの初期化処理
-    this.auth = firebase.auth();
-    this.auth.onAuthStateChanged(this.onAuthStateChanged.bind(this));
   }
 
   // Loads chat messages history and listens for upcoming ones.
   loadMessages() {
-    // TODO : 08. firestoreから読み込み
-    // this.firestore.collection('messages')
-    //   .orderBy('timestamp')
-    //   .get()
-    //   .then((querySnapshot) => {
-    //     querySnapshot.forEach((doc) => {
-    //       this.displayMessage(doc.id, doc.data().name, doc.data().message, 'images/profile_placeholder.png')
-    //     });
-    //   })
-
-    // TODO : 12. 認証後のユーザー画像追加
-    this.firestore.collection('messages')
-      .orderBy('timestamp')
-      .get()
-      .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          this.displayMessage(doc.id, doc.data().name, doc.data().message, doc.data().photoURL)
-        });
-      })
   };
 
   // Saves a new message on the Firestore.
   saveMessage(e) {
-    e.preventDefault();
-
-    // TODO : 09. 送信時処理を追加
-    // if (this.messageInput.value) {
-    //   var date = new Date();
-    //   this.displayMessage(date.getTime(), 'User Name', this.messageInput.value, 'images/profile_placeholder.png');
-    // }
-
-    // TODO : 09. 送信時のFirestore保存処理を追加
-    // if (this.messageInput.value) {
-    //   this.firestore.collection('messages').add({
-    //       name: "User Name",
-    //       message: this.messageInput.value,
-    //       photoURL: '/images/profile_placeholder.png',
-    //       timestamp: new Date()
-    //     })
-    //     .catch(function (error) {
-    //       console.error("Error adding document: ", error);
-    //     });
-
-    //   this.resetMaterialTextfield(this.messageInput);
-    //   this.toggleButton();
-    // }
-
-    // TODO : 12. 認証チェックを追加
-    if (this.messageInput.value && this.checkSignedInWithMessage()) {
-      this.firestore.collection('messages').add({
-          name: this.auth.currentUser.displayName,
-          message: this.messageInput.value,
-          photoURL: this.auth.currentUser.photoURL || '/images/profile_placeholder.png',
-          timestamp: new Date()
-        })
-        .catch(function (error) {
-          console.error("Error adding document: ", error);
-        });
-
-      this.resetMaterialTextfield(this.messageInput);
-      this.toggleButton();
-    }
   };
 
   // Signs-in Easy Chat.
   signIn() {
-    // TODO : 11. サインインボタン
+    // サインインボタンが押されたらGoogleログイン
     var provider = new firebase.auth.GoogleAuthProvider();
     this.auth.signInWithPopup(provider);
   };
 
   // Signs-out of Easy Chat.
   signOut() {
-    // TODO : 11. サインアウトボタン
+    // サインアウトボタンが押されたらログアウト
     this.auth.signOut();
   };
 
@@ -183,14 +110,14 @@ class EasyChat {
       // Show sign-in button.
       this.signInButton.removeAttribute('hidden');
 
-      // TODO : 11. ログアウト時にログイン画面に遷移
+      // ログアウト時にログイン画面に遷移
       window.location.href = './login.html';
     }
   };
 
   // Returns true if user is signed-in. Otherwise false and displays a message.
   checkSignedInWithMessage() {
-    // TODO : 11. 認証されているかチェック
+    // 認証されているかチェック
     if (this.auth.currentUser) {
       return true;
     }
